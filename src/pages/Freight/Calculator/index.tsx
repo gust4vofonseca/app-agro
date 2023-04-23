@@ -6,7 +6,7 @@ import { Header } from '../../../components/Header'
 export function Calculator() {
     return (
         <Container>
-            <Header/>
+            {/* <Header/> */}
             teste
         </Container>
     )
