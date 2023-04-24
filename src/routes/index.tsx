@@ -1,20 +1,20 @@
 import React from 'react';
-import { BrowserRouter, Routes as RoutesSwitch , Route} from 'react-router-dom';
+import { BrowserRouter, Route, Switch as RoutesSwitch } from 'react-router-dom';
 
-// import Route from './Route';
-import { Calculator } from '../pages/Freight/Calculator';
-import { Header } from '../components/Header';
-import { useAuth } from '../hooks/useAuth';
+import  Calculator  from '../pages/Freight/Calculator';
+import { Login } from '../pages/Login';
+import PrivateAdminRoute from './PrivateAdminRoute'
+import PrivateRoute from './PrivateRoute';
+
 
 const Routes: React.FC = () => {
-
-  const { user } = useAuth();
 
   return (
     <BrowserRouter>
       <RoutesSwitch>
-        <Route path='/' element={<Header/>} />
-        <Route path='/teste' element={user ? <Calculator/> : <Header/>} />
+        <Route path="/" exact component={Login} />
+        <PrivateRoute path="/dashboard" exact component={Calculator} />
+        <PrivateAdminRoute path="/calculator" exact component={Calculator} />
       </RoutesSwitch>
     </BrowserRouter>
   );

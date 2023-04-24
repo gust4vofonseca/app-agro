@@ -3,11 +3,16 @@ import { Container } from './styles'
 import { Header } from '../../../components/Header'
 
 
-export function Calculator() {
+
+
+const Calculator: React.FC = () => {
+
     return (
         <Container>
-            {/* <Header/> */}
+            <Header/>
             teste
         </Container>
-    )
-}
+    );
+  };
+
+  export default Calculator;
