@@ -1,9 +1,10 @@
 import React from 'react'
 import { ButtonSendFile, Container, Logo, SendButtonContainer } from './styles'
 import LogoTerraFort from '../../assets/images/logo-terrafort.png'
-import { Link } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth'
 
 export function Header() {
+  const {signOut} = useAuth();
     return (
         <Container>
             <Logo>
@@ -11,8 +12,8 @@ export function Header() {
             </Logo>
 
             <SendButtonContainer>
-            <ButtonSendFile type="button" >
-              <Link to="/calculator">Vai</Link>
+            <ButtonSendFile type="button" onClick={signOut}>
+              Sair
             </ButtonSendFile>
           </SendButtonContainer>
         </Container>

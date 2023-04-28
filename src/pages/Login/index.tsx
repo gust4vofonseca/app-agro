@@ -2,7 +2,7 @@
 import { Form } from '@unform/web';
 import { Toaster } from 'react-hot-toast';
 import { FormHandles } from '@unform/core';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 import api from '../../services/api';
@@ -43,8 +43,9 @@ interface IUser {
 export const Login: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const [error, setError] = useState('');
+  const refresh_token = localStorage.getItem('@Terrafort:refresh_token');
 
-  const { signIn } = useAuth();
+  const { signIn, verifyTokenExpiration } = useAuth();
 
   const history = useHistory();
 
@@ -84,6 +85,18 @@ export const Login: React.FC = () => {
     },
     [history, signIn],
   );
+
+
+  useEffect(() => {
+    void async function fetchData() {
+      if (refresh_token) {
+        console.log({refresh_token})
+        await verifyTokenExpiration();
+
+        history.push('/dashboard');
+    }
+    }();
+}, [history, refresh_token, verifyTokenExpiration]);
 
   return (
     <Container>
