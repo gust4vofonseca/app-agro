@@ -3,9 +3,8 @@ import { Form } from '@unform/web';
 import { Toaster } from 'react-hot-toast';
 import { FormHandles } from '@unform/core';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
-import api from '../../services/api';
 import Input from '../../components/Input';
 import Button from '../../components/ButtonLogin';
 
