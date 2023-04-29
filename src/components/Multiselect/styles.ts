@@ -2,9 +2,13 @@ import styled from 'styled-components';
 
 
 export const Container = styled.div`
+
     display: flex;
-    justify-content: space-evenly;
-    margin-top: 3rem;
+
+
+    @media (max-width: 768px) {    
+        flex-direction: column;
+    }
 `;
 
 export const Select = styled.select`
@@ -16,6 +20,7 @@ export const Select = styled.select`
     border-radius: 5px; 
     background: transparent;
 `
+
 
 export const Input = styled.input`
     width: 16.5rem;

@@ -64,8 +64,6 @@ export function AuthenticationProvider({children}: AuthenticationProviderProps) 
           token: refresh_token,
         });
 
-        console.log({response})
-
         const { token, user, refresh_token: newRefreshToken } = response.data;
 
         localStorage.setItem('@Terrafort:refresh_token', newRefreshToken);

@@ -8,25 +8,24 @@ export const Container = styled.div`
 
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0 4rem;
   justify-content: space-between;
 
   background-color: var(--green);
+
+  @media (max-width: 768px) {    
+    padding: 0;
+  }
 `;
 
 export const Logo = styled.div`
-  display: flex;
-  align-items: center;
-
   img {
     width: 6.81rem;
   }
 `;
 
 export const SendButtonContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const ButtonSendFile = styled.button`
