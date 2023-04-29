@@ -49,7 +49,7 @@ const Multiselect: React.FC<IMultiselectProps> = ({salved, productSelected, opti
     return (
         <Container>
               <Select onChange={handleProdut}>
-                <option value="">Selecione uma opção</option>
+                <option value="">Selecione um Produto</option>
                  {
                   options.map( opt => (
                     opt.value === productSelected.id ?
