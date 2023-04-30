@@ -12,7 +12,6 @@ export const Container = styled.div`
     }
 
     .form-user {
-        margin-top: 2rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -88,5 +87,38 @@ export const Button = styled.button`
     font-weight: 500;
     color: #000;
     text-align: center;
+
+`
+
+
+export const ButtonRemove = styled.button`
+    margin-top: 1rem;
+    width: 4.125rem;
+    height: 2.313rem;
+
+    gap: 0.5rem;
+    border-radius: 0.625rem;
+
+    background: var(--red);
+    border: none;
+    color: white;
+
+    transition: background-color 0.2s;
+
+    .loader {
+        margin-top: 0.4rem;
+    }
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+    text-align: center;
+
+    margin-left: 1rem;
 
 `
