@@ -89,7 +89,6 @@ export const Login: React.FC = () => {
   useEffect(() => {
     void async function fetchData() {
       if (refresh_token) {
-        console.log({refresh_token})
         await verifyTokenExpiration();
 
         history.push('/dashboard');
@@ -104,7 +103,7 @@ export const Login: React.FC = () => {
 
         <LoginContainer>
 
-          <Form ref={formRef} /*onSubmit={handleSubmit}*/ onSubmit={handleSubmit}>
+          <Form ref={formRef} onSubmit={handleSubmit}>
             <Label htmlFor="email">E-mail:</Label>
             <Input
               id="email"

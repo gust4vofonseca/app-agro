@@ -106,7 +106,6 @@ const SalesPage: React.FC = () => {
                         <span>Peso total: 845Kg</span>
                     </div>
                 </DivSummary>
-
             </Container>
         </>
     );
