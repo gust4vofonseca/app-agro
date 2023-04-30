@@ -7,7 +7,7 @@ import { ReactComponent as VisibleIcon } from '../../assets/icons/visibility.svg
 import { Form } from '@unform/web';
 import api from '../../services/api';
 
-interface IProducts {
+interface IUser {
     id?: string;
     name: string;
     isAdmin: boolean;
@@ -17,8 +17,8 @@ interface IProducts {
 
 const Users: React.FC = () => {
     const [isPasswordShadow, setIsPasswordShadow] = useState(false);
-    const [products, setProducts] = useState<IProducts[]>();
-    const [select, setSelect] = useState<IProducts>({} as IProducts);
+    const [products, setProducts] = useState<IUser[]>();
+    const [select, setSelect] = useState<IUser>({} as IUser);
 
     const tooglePasswordVisible = useCallback(() => {
         setIsPasswordShadow(!isPasswordShadow);
@@ -33,7 +33,7 @@ const Users: React.FC = () => {
                 setSelect(produ);
             }
         } else {
-            setSelect({} as IProducts)
+            setSelect({} as IUser)
         }
     }, [products]);
   
@@ -46,9 +46,23 @@ const Users: React.FC = () => {
         }));
     };
 
+    const handleChangeADM = useCallback ((event: ChangeEvent<HTMLSelectElement>) => {
+        const { value } = event.target;
+
+        const adm = value === 'true'
+
+        console.log({adm})
+
+        setSelect((prevValues) => ({
+        ...prevValues,
+        isAdmin: adm,
+        }));
+    }, []);
+
 
     const HandleSave = useCallback(async ()=>{
         try {
+            console.log({select})
             if (select.id) {
                 await api.post(`/user/update`, {
                     id: select.id,
@@ -77,7 +91,7 @@ const Users: React.FC = () => {
         try {
             if (id) {
                 api.post(`/user/delete/${id}`)
-                setSelect({} as IProducts)
+                setSelect({} as IUser)
                 loadData()
             }
         } catch (error) {
@@ -128,6 +142,7 @@ const Users: React.FC = () => {
                             type={!isPasswordShadow ? 'password' : 'text'}
                             placeholder='Senha'
                             id='password' 
+                            onChange={handleChange} 
                         />
                         <ButtonVisible type="button" onClick={tooglePasswordVisible}>
                             <VisibleIcon />
@@ -137,13 +152,13 @@ const Users: React.FC = () => {
                     <DivInput>
                         {
                             select.isAdmin ? 
-                            <Select id='adm' name='adm'>
+                            <Select id='adm' name='adm' onChange={handleChangeADM}>
                                 <option value="">ADM</option>
                                 <option value="true" selected>Sim</option>
                                 <option value="false">Não</option>
                             </Select> 
                             :
-                            <Select id='adm' name='adm'>
+                            <Select id='adm' name='adm' onChange={handleChangeADM}>
                                 <option value="">Permisão de Administrador?</option>
                                 <option value="true">Sim</option>
                                 <option value="false">Não</option>
