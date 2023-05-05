@@ -46,6 +46,8 @@ export function AuthenticationProvider({children}: AuthenticationProviderProps) 
 
         localStorage.setItem('@Terrafort:refresh_token', refresh_token);
 
+        api.defaults.headers.authorization = `Bearer ${token}`;
+
         setData({ token, user });
     }, []);
 
@@ -67,6 +69,8 @@ export function AuthenticationProvider({children}: AuthenticationProviderProps) 
         const { token, user, refresh_token: newRefreshToken } = response.data;
 
         localStorage.setItem('@Terrafort:refresh_token', newRefreshToken);
+
+        api.defaults.headers.authorization = `Bearer ${token}`;
 
         setData({ token, user });
       } catch (err) {
